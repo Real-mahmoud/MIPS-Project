@@ -1,0 +1,52 @@
+v 4
+file . "ALU.vhd" "2e6e64d51238c9c9a889cf8f668f66971de60790" "20251215164114.321":
+  entity alu at 1( 0) + 0 on 11;
+  architecture behavioral of alu at 22( 660) + 0 on 12;
+file . "ALUdecoder.vhd" "f19a25ad3ca4e8331f14aea31da7500127e199fa" "20251215164114.321":
+  entity aludecoder at 1( 0) + 0 on 13;
+  architecture behavioral of aludecoder at 20( 604) + 0 on 14;
+file . "ALU_suma.vhd" "21333ddca93532f299ff09d664337bd90571efcf" "20251215164114.322":
+  entity alu_suma at 1( 0) + 0 on 15;
+  architecture behavioral of alu_suma at 22( 615) + 0 on 16;
+file . "alu_sum_res.vhd" "0438bd6a035760052e9d015d8ea37d90e3d39cd1" "20251215164114.322":
+  entity alu_sum_res at 1( 0) + 0 on 17;
+  architecture behavioral of alu_sum_res at 21( 605) + 0 on 18;
+file . "ControlUnit.vhd" "e8576de224596ea847c6069e441dc2b16bc69a7b" "20251215164114.322":
+  entity controlunit at 1( 0) + 0 on 19;
+  architecture behavioral of controlunit at 27( 856) + 0 on 20;
+file . "corrimiento.vhd" "d4b10200595491ba348a5956919351fbe1e58f33" "20251215164114.322":
+  entity corrimiento at 1( 0) + 0 on 21;
+  architecture behavioral of corrimiento at 19( 549) + 0 on 22;
+file . "DataPath.vhd" "2fad9007864bd887510ea7389304ccb6c67ebae2" "20251215164114.323":
+  entity mips at 9( 356) + 0 on 23;
+  architecture behavioral of mips at 31( 1041) + 0 on 24;
+file . "Instruction_Memory.vhd" "386d1ec21b9624b9efb4ee1c8ea7c04c5e794120" "20251215164114.323":
+  entity instruction_memory at 3( 65) + 0 on 25;
+  architecture behavioral of instruction_memory at 13( 336) + 0 on 26;
+file . "MainDecoder.vhd" "7c2c5b81494840d568f385a35d47bdad1448f228" "20251215164114.323":
+  entity maindecoder at 1( 0) + 0 on 27;
+  architecture behavioral of maindecoder at 28( 805) + 0 on 28;
+file . "mips_tb.vhdl" "c5aa8e7fb12f160c9faf8634ae817519c5ac0da8" "20251215164114.463":
+  entity mips_tb at 1( 0) + 0 on 45;
+  architecture sim of mips_tb at 8( 108) + 0 on 46;
+file . "Mux_2to1_32b.vhd" "fe78e0090b5526e811532b1d317d1006a1d86fe7" "20251215164114.324":
+  entity mux_2to1_32b at 1( 0) + 0 on 31;
+  architecture behavioral of mux_2to1_32b at 21( 595) + 0 on 32;
+file . "Mux_2to1_5bits.vhd" "a57c061d3032af34d61119bb7e99bcd433cc2579" "20251215164114.324":
+  entity mux_2to1_5bits at 1( 0) + 0 on 33;
+  architecture behavioral of mux_2to1_5bits at 21( 633) + 0 on 34;
+file . "mux_4_32b.vhd" "21ec2844c3250426fce335b912834ebdd2b1b1f9" "20251215164114.324":
+  entity mux_4_32b at 1( 0) + 0 on 35;
+  architecture behavioral of mux_4_32b at 23( 748) + 0 on 36;
+file . "PC.vhd" "5659c5fe46de7c714d4a4c8705471e2af367ac24" "20251215164114.325":
+  entity pc at 1( 0) + 0 on 37;
+  architecture behavioral of pc at 21( 597) + 0 on 38;
+file . "Register_File.vhd" "d4fbc4f9c8f7fb77f0d47258cd6667cd1bca1ffe" "20251215164114.325":
+  entity register_file at 1( 0) + 0 on 39;
+  architecture behavioral of register_file at 27( 886) + 0 on 40;
+file . "SignExtend.vhd" "2bec1d303f9e9e3fdda7ddbfb011616efbe70181" "20251215164114.325":
+  entity signextend at 1( 0) + 0 on 41;
+  architecture behavioral of signextend at 19( 547) + 0 on 42;
+file . "zero_extend.vhd" "efe9a9a5abd3770cf66a259e70606e8a4791230e" "20251215164114.325":
+  entity zero_extend at 1( 0) + 0 on 43;
+  architecture behavioral of zero_extend at 18( 467) + 0 on 44;

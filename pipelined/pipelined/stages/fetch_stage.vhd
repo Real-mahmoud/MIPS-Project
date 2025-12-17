@@ -1,0 +1,51 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.numeric_std.ALL;
+
+ENTITY fetch IS
+	PORT (
+		clk, reset, loadUse : IN STD_LOGIC;
+		IRin : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+		pcIn : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+		pcOut : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+		branch_taken  : IN STD_LOGIC;
+        branch_target : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+		IR : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+	);
+END fetch;
+
+ARCHITECTURE fetch_stage OF fetch IS
+	SIGNAL stall_pc_mux_out : STD_LOGIC_VECTOR(31 DOWNTO 0);
+	SIGNAL pc_mux_out : STD_LOGIC_VECTOR(31 DOWNTO 0);
+	SIGNAL pcMuxOut : STD_LOGIC_VECTOR(31 DOWNTO 0);
+
+	SIGNAL m0 : STD_LOGIC_VECTOR(31 DOWNTO 0);
+	SIGNAL irTemp : STD_LOGIC_VECTOR(31 DOWNTO 0);
+
+	SIGNAL pcAdder : STD_LOGIC_VECTOR(31 DOWNTO 0);
+BEGIN
+
+	pc_mux : ENTITY work.mux_2_1 PORT MAP (reset, pcIn, m0, pc_mux_out);
+
+	stall_pc_mux : ENTITY work.mux_2_1 PORT MAP (loadUse, pcAdder,pc_mux_out, pcOut);
+
+	mainMemory : ENTITY work.instructions_memory GENERIC MAP (65536, 32, 16) PORT MAP (reset, pc_mux_out, m0, irTemp);
+
+	pc_adder_proc: PROCESS (clk, reset)
+BEGIN
+    IF reset = '1' THEN
+        pcAdder <= m0;
+    ELSIF rising_edge(clk) THEN  -- Use rising_edge if intended; otherwise rising_edge for consistency
+        IF irTemp(29) = '1' THEN
+            pcAdder <= STD_LOGIC_VECTOR(to_unsigned(to_integer(unsigned(pcIn)) + 2, 32));
+        ELSE
+            pcAdder <= STD_LOGIC_VECTOR(to_unsigned(to_integer(unsigned(pcIn)) + 1, 32));
+        END IF;
+    END IF;
+END PROCESS;
+
+	IR <= irTemp when loadUse ='0' and reset = '0'
+	else IRin;
+
+
+END ARCHITECTURE;
